@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.prueba.concepto</groupId>
+  <artifactId>p2</artifactId>
+  <version>1.4-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jdk.version>1.8</jdk.version>
+   	<failOnMissingWebXml>false</failOnMissingWebXml>  
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!--<dependency>
+      <groupId>com.ofbiz</groupId>
+      <artifactId>commons-compress</artifactId>
+      <version>1.1</version>
+      <type>jar</type>
+    </dependency>-->
+    <dependency>
+      <groupId>com.ofbiz</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.27-bin</version>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
+
+  <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>nexus-snapshots</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+  
+   <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+		          <archive>
+		            <addMavenDescriptor>false</addMavenDescriptor>
+		          </archive>
+		        </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <attachClasses>true</attachClasses>
+                            <packagingExcludes>WEB-INF</packagingExcludes>
+                        </configuration>
+                        <goals>
+                            <goal>inplace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!--<plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>2.6</version>
+    <executions>
+        <execution>
+            <id>make-zip</id>
+            <phase>package</phase>
+            <goals>
+                <goal>single</goal>
+            </goals>
+            <configuration>
+                <descriptors>
+                    <descriptor>src/assembly/assembly.xml</descriptor>
+                </descriptors>
+                <appendAssemblyId>false</appendAssemblyId>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>-->
+
+            <!--  <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <outputDirectory>output-resources</outputDirectory>
+                    <resources>
+                        <resource>
+                            <directory>service</directory>
+                            <excludes>
+                                <exclude>*.png</exclude>
+                            </excludes>
+                            <filtering>true</filtering>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-a-jar</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>Add-2-local-repository</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <packaging>jar</packaging>
+                            <file>${project.build.directory}\${artifactId}-${version}.jar</file>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
+        </plugins>
+    </build>
+
+    <repositories>
+    <repository>
+      <id>maven-group</id>
+      <url>http://localhost:8081/repository/maven-group/</url>
+    </repository>
+  </repositories>
+
+  <scm>
+     <connection>scm:git:https://github.com/jmchincho/p3.git</connection>
+     <url>scm:git:https://github.com/jmchincho/p3.git</url>
+     <developerConnection>scm:git:https://github.com/jmchincho/p3.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+</project>
